@@ -8,8 +8,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
-import { getContacts } from '../../redux/selectors';
+import { selectVisibleContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/operations';
 
 const initialValues = {
   name: "",
@@ -25,7 +25,7 @@ const ContactForm = () => {
     const nameId = nanoid();
     const numberId = nanoid();
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
+    const contacts = useSelector(selectVisibleContacts);
 
     const handleSubmit = (values, actions) => {
         const isContact = contacts.some(
