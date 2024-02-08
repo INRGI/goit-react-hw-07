@@ -26,16 +26,18 @@ const App = () => {
 
       <ContactTitle>Contacts</ContactTitle>
 
-        {isLoading && !error && <Loader />}
+      {isLoading && !error ? (<Loader />) :
+          contacts.length > 0 ? (
+              <>
+                <Filter />
+                <ContactList />
+              </>
+            ) : (
+              <EmptyTitle>Your phonebook is empty.</EmptyTitle>
+            )
+        }
       
-        {contacts.length > 0 ? (
-        <Filter />
-        ) : (
-          <EmptyTitle>Your phonebook is empty.</EmptyTitle>
-        )}
-        {contacts.length > 0 && (
-          <ContactList />
-        )}
+        
         
       </Container>
     );
