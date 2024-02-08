@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import ContactForm from "../ContactForm";
 import ContactList from "../ContactList";
+import Loader from "../Loader";
 import Filter from "../Filter";
 import { ContactTitle, Container, EmptyTitle, PhoneTitle } from "./App.styled";
 import { selectContacts, selectError, selectIsLoading } from "../../redux/selectors";
@@ -25,6 +26,8 @@ const App = () => {
 
       <ContactTitle>Contacts</ContactTitle>
 
+        {isLoading && !error && <Loader />}
+      
         {contacts.length > 0 ? (
         <Filter />
         ) : (
